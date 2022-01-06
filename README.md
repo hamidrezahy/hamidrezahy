@@ -19,8 +19,6 @@
     
 <p align="left">
     <a href="https://github.com/hamidrezahy" target="_blank"><img alt="alwinw" src="https://badges.pufler.dev/visits/hamidrezahy/hamidrezahy?logo=GitHub&label=visits&color=success&logoColor=white&style=flat-square"/></a>
-
-    <a href="https://github.com/hamidrezahy/alwinw" target="_blank"><img alt="GitHub hits" src="https://img.shields.io/github/last-commit/hamidrezahy/hamidrezahy?label=profile%20updated&style=flat-square"></a>
 </p>
 <!--
 **hamidrezahy/hamidrezahy** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
