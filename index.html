@@ -1,1 +1,1012 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Engineer | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --dotnet-purple: #4f46e5;
+            --dotnet-blue: #0ea5e9;
+            --bg-main: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Balanced Container */
+        .custom-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--dotnet-purple), var(--dotnet-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Capsule Style */
+        .capsule {
+            background: rgba(79, 70, 229, 0.05);
+            color: var(--dotnet-purple);
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .capsule:hover {
+            background: var(--dotnet-purple);
+            color: white;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Identity Card */
+        .identity-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 2rem;
+            padding: 3.5rem 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .repo-card {
+            background: white;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+            padding: 1.8rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .repo-card:hover {
+            border-color: var(--dotnet-purple);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item {
+            border-left: 2px solid #e2e8f0;
+            padding: 0 0 2.5rem 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--dotnet-purple);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px white;
+        }
+
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--dotnet-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        /* اضافه کردن به بخش استایل قبلی */
+        .identity-card {
+            position: relative;
+            overflow: hidden;
+            /* برای اینکه Glow ها بیرون نزنند */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2.5rem;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Watermark ID */
+        .id-watermark {
+            position: absolute;
+            right: -30px;
+            bottom: -20px;
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(79, 70, 229, 0.03);
+            /* بسیار محو */
+            user-select: none;
+            pointer-events: none;
+            letter-spacing: -5px;
+        }
+
+        /* Abstract Glows */
+        .glow-1 {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+        }
+
+        .id-link {
+            font-family: 'monospace';
+            font-size: 0.9rem;
+            color: var(--dotnet-purple);
+            opacity: 0.8;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--dotnet-purple);
+        }
+
+        /* Horizontal Scroll Logic */
+        .scroll-wrapper {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0.5rem 2rem 0.5rem;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            /* Hide scrollbar Firefox */
+        }
+
+        .scroll-wrapper::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar Chrome/Safari */
+        }
+
+        /* PR Box Style */
+        .pr-card {
+            background: white;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pr-card:hover {
+            border-color: var(--dotnet-blue);
+            background: #f0f9ff;
+        }
+
+        .pr-icon {
+            color: #22c55e;
+            /* Success Green for Merged PRs */
+            font-size: 1.2rem;
+        }
+
+
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+
+        .pulse-dot::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: #22c55e;
+            border-radius: 50%;
+            position: absolute;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .custom-container {
+                padding: 1rem;
+                /* کاهش حاشیه کل صفحه */
+            }
+
+            .identity-card {
+                padding: 2.5rem 1.5rem;
+                /* پدینگ بهینه برای موبایل */
+                border-radius: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .identity-card h1 {
+                font-size: 2.5rem !important;
+                /* جلوگیری از بزرگ بودن بیش از حد نام */
+                letter-spacing: -1.5px !important;
+                line-height: 1.1 !important;
+            }
+
+            .id-watermark {
+                font-size: 4rem;
+                /* کوچک کردن واترمرک برای جلوگیری از شلوغی */
+                right: -10px;
+                bottom: -10px;
+            }
+
+            .repo-card {
+                min-width: 280px !important;
+                /* عریض‌تر شدن کارت‌ها در اسکرول افقی موبایل */
+                padding: 1.5rem;
+            }
+
+            .display-2 {
+                font-size: 2.8rem !important;
+            }
+
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 2rem !important;
+            }
+
+            /* بهینه‌سازی دکمه‌ها برای تاچ */
+            .capsule {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="custom-container">
+
+        <div class="identity-card overflow-hidden">
+            <div class="glow-1"></div>
+            <div class="id-watermark">hamidrezahy</div>
+
+            <div class="position-relative" style="z-index: 5;">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <span class="pulse-dot"></span>
+                    <span class="small fw-800 text-uppercase opacity-50"
+                        style="letter-spacing: 2px; font-size: 0.65rem;">
+                        Senior Software Engineer @ TopChange
+                    </span>
+                </div>
+
+                <span class="brand-name text-gradient mb-1">Software Architecture</span>
+                <a href="https://hamidrezahy.com" class="id-link mb-4 d-inline-block">@hamidrezahy</a>
+
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <h1 class="display-2 fw-800 mb-4" style="letter-spacing: -3px; line-height: 0.9;">
+                            I'm <span class="text-dark">Hamidreza Hematyar</span><br>
+                            <span class="text-gradient" style="font-size: 0.8em;">.NET Expert</span>
+                        </h1>
+                        <p class="lead text-secondary mb-5"
+                            style="max-width: 600px; font-weight: 500; font-size: 1.1rem;">
+                            Architecting high-performance backends for <span class="text-dark fw-bold">FinTech & Crypto
+                                Exchanges</span>. Expert in <span class="text-dark fw-bold"></span>Payment Gateway
+                            Integration</span>, Distributed Consistency, and Redis-driven trading engines.
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="capsule"><i class="fa-solid fa-chart-line me-2 text-success"></i>FinTech
+                                Solutions</span>
+                            <span class="capsule"><i class="fa-solid fa-bolt me-2 text-warning"></i>Redis
+                                Architect</span>
+                            <span class="capsule"><i class="fa-solid fa-microchip me-2 text-primary"></i>Distributed
+                                Systems</span>
+                            <span class="capsule"><i class="fa-solid fa-wallet me-2 text-primary"></i>Crypto
+                                Infrastructure</span>
+                            <span class="capsule"><i class="fa-solid fa-shield-halved me-2 text-success"></i>Payment
+                                Security</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 d-none d-lg-block text-end">
+                        <div class="p-4 rounded-4 bg-white bg-opacity-50 border border-white shadow-sm d-inline-block text-start"
+                            style="min-width: 200px;">
+                            <div class="mb-3">
+                                <small class="d-block text-muted small"
+                                    style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">Current
+                                    Focus</small>
+                                <span class="fw-800 text-dark">Exchange Core</span>
+                            </div>
+                            <div>
+                                <small class="d-block text-muted small"
+                                    style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase;">Key
+                                    Expertise</small>
+                                <span class="fw-800 text-gradient">System Scalability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-800 mb-0 text-dark">Technical Depth</h4>
+                <!-- <span class="badge rounded-pill bg-dark px-3 py-2" style="font-size: 0.7rem; letter-spacing: 1px;">STACK
+                    v2.5</span> -->
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="repo-card border-0 shadow-sm"
+                        style="background: linear-gradient(145deg, #ffffff, #f1f5f9);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary">
+                                <i class="fa-solid fa-server fs-5"></i>
+                            </div>
+                            <h6 class="fw-800 mb-0">Backend Engine</h6>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="small fw-600 text-secondary">ASP.NET Core</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">EF Core</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">gRPC</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">RabbitMQ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-4">
+                    <div class="repo-card border-0 shadow-sm"
+                        style="background: linear-gradient(145deg, #ffffff, #f1f5f9);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-2 rounded-3 bg-warning bg-opacity-10 text-warning">
+                                <i class="fa-solid fa-bolt fs-5"></i>
+                            </div>
+                            <h6 class="fw-800 mb-0">High Availability</h6>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="small fw-600 text-secondary">Redis Streams</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">Pub/Sub</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">PostgreSQL</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">Docker</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="col-md-4">
+                    <div class="repo-card border-0 shadow-sm"
+                        style="background: linear-gradient(145deg, #ffffff, #f1f5f9);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-2 rounded-3 bg-success bg-opacity-10 text-success">
+                                <i class="fa-solid fa-coins fs-5"></i>
+                            </div>
+                            <h6 class="fw-800 mb-0">Web3 & Payments</h6>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="small fw-600 text-secondary">Crypto Gateways</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">HD Wallets</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">Webhooks</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">Transaction Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="repo-card border-0 shadow-sm"
+                        style="background: linear-gradient(145deg, #ffffff, #f1f5f9);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="p-2 rounded-3 bg-info bg-opacity-10 text-info">
+                                <i class="fa-solid fa-microchip fs-5"></i>
+                            </div>
+                            <h6 class="fw-800 mb-0">Architecture</h6>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="small fw-600 text-secondary">Clean Architecture</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">DDD</span>
+                            <span class="small text-muted">•</span>
+                            <span class="small fw-600 text-secondary">TDD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <h4 class="fw-800 mb-4 text-dark">Experience</h4>
+                <div class="timeline-item">
+                    <h6 class="fw-bold mb-1">Senior Backend Developer</h6>
+                    <small class="text-gradient fw-bold">Company Name | 2022 - 2025</small>
+                    <p class="small text-muted mt-2">Focused on Redis orchestration and .NET performance tuning.</p>
+                </div>
+                <div class="timeline-item">
+                    <h6 class="fw-bold mb-1">Software Engineer</h6>
+                    <small class="text-muted fw-bold">Startup X | 2020 - 2022</small>
+                </div>
+
+
+                <style>
+                    .recommendation-card {
+                        background: rgba(255, 255, 255, 0.7);
+                        /* کمی شفاف برای حالت گلس */
+                        backdrop-filter: blur(10px);
+                        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+                        border-radius: 12px;
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                        max-width: 400px;
+                        /* محدود کردن عرض برای جمع‌وجور شدن */
+                    }
+
+                    .recommendation-card:hover {
+                        transform: translateY(-5px);
+                        background: rgba(255, 255, 255, 1);
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+                    }
+
+                    .rec-avatar {
+                        width: 42px;
+                        /* کوچک‌تر کردن آواتار */
+                        height: 42px;
+                        border: 1.5px solid #fff;
+                        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .rec-name {
+                        font-size: 0.85rem;
+                        /* فونت ریزتر و شیک‌تر */
+                        letter-spacing: -0.2px;
+                    }
+
+                    .rec-position {
+                        font-size: 0.7rem;
+                        opacity: 0.7;
+                    }
+
+                    .rec-brief {
+                        font-size: 0.8rem;
+                        line-height: 1.4;
+                        color: #64748b;
+                    }
+
+                    /* آواتار کوچک در لیست */
+                    .avatar-initials {
+                        width: 38px;
+                        height: 38px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 10px;
+                        /* استایل مدرن‌تر از دایره کامل */
+                        font-weight: 700;
+                        font-size: 0.85rem;
+                        letter-spacing: -0.5px;
+                    }
+
+                    /* آواتار بزرگ در مودال */
+                    .avatar-initials-lg {
+                        width: 70px;
+                        height: 70px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 18px;
+                        font-weight: 800;
+                        font-size: 1.5rem;
+                    }
+
+                    .recommendation-card {
+                        background: #ffffff;
+                        transition: transform 0.2s ease;
+                    }
+
+                    .recommendation-card:hover {
+                        transform: scale(1.02);
+                    }
+
+                    #recommendations-container {
+    max-height: 480px; /* یا هر ارتفاعی که مد نظرت است */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px; /* برای اینکه اسکرول‌بار روی محتوا نیفتد */
+    scrollbar-width: thin; /* برای مرورگرهای فایرفاکس */
+    scrollbar-color: var(--dotnet-purple) transparent;
+}
+
+/* شخصی‌سازی اسکرول‌بار برای مرورگرهای Chrome و Edge */
+#recommendations-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+#recommendations-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#recommendations-container::-webkit-scrollbar-thumb {
+    background-color: var(--dotnet-purple);
+    border-radius: 20px;
+    opacity: 0.5;
+}
+#recommendations-container {
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+}
+
+#recommendations-container {
+    max-height: 480px; /* یا هر ارتفاعی که مناسب چیدمانت است */
+    overflow-y: auto;
+    padding-right: 5px;
+    
+    /* مخفی کردن اسکرول‌بار برای فایرفاکس */
+    scrollbar-width: none; 
+    
+    /* مخفی کردن اسکرول‌بار برای IE و Edge قدیم */
+    -ms-overflow-style: none; 
+}
+
+/* مخفی کردن اسکرول‌بار برای Chrome، Safari و Edge جدید */
+#recommendations-container::-webkit-scrollbar {
+    display: none;
+}
+                </style>
+
+                <h4 class="fw-800 mt-5 mb-4 text-dark">LinkedIn Reviews</h4>
+
+                <div id="recommendations-container">
+                </div>
+
+
+            </div>
+            <div class="col-lg-8">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="fw-800 mb-0 text-dark">Featured Projects</h4>
+                    <div class="text-muted small">Scroll <i class="fa-solid fa-arrow-right-long ms-1"></i></div>
+                </div>
+
+                <div class="scroll-wrapper">
+                    <div class="repo-card" style="min-width: 350px;">
+                        <div class="mb-3 text-primary"><i class="fa-solid fa-layer-group fs-4"></i></div>
+                        <h5 class="fw-bold">mly.li Core</h5>
+                        <p class="small text-secondary mb-4">High-throughput URL shortener engine with Redis-first
+                            architecture.</p>
+                        <div class="d-flex gap-2">
+                            <span class="capsule" style="font-size: 0.7rem;">.NET 10</span>
+                            <span class="capsule" style="font-size: 0.7rem;">Redis</span>
+                        </div>
+                    </div>
+                    <div class="repo-card" style="min-width: 350px;">
+                        <div class="mb-3 text-info"><i class="fa-solid fa-microchip fs-4"></i></div>
+                        <h5 class="fw-bold">Dotnet-Orchestrator</h5>
+                        <p class="small text-secondary mb-4">Low-level utility for managing Redis streams and background
+                            tasks.</p>
+                        <div class="d-flex gap-2">
+                            <span class="capsule" style="font-size: 0.7rem;">Nuget</span>
+                        </div>
+                    </div>
+                    <div class="repo-card" style="min-width: 350px;">
+                        <div class="mb-3 text-warning"><i class="fa-solid fa-bolt fs-4"></i></div>
+                        <h5 class="fw-bold">Fast-Cache-Lib</h5>
+                        <p class="small text-secondary mb-4">Ultra-fast memory caching layer with native AOT support.
+                        </p>
+                        <div class="d-flex gap-2">
+                            <span class="capsule" style="font-size: 0.7rem;">C#</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="fw-800 mt-4 mb-4 text-dark">Recent Contributions (PRs)</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="pr-card">
+                            <i class="fa-solid fa-code-merge pr-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">microsoft/dotnet-runtime</h6>
+                                <p class="mb-0 text-muted" style="font-size: 0.75rem;">Optimized JIT for specific SIMD
+                                    instructions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pr-card">
+                            <i class="fa-solid fa-code-merge pr-icon"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0" style="font-size: 0.9rem;">stackexchange/redis</h6>
+                                <p class="mb-0 text-muted" style="font-size: 0.75rem;">Fixed memory leak in connection
+                                    multiplexer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-between align-items-center mt-5 mb-4">
+                    <h4 class="fw-800 mb-0 text-dark">Technical Insights</h4>
+                    <div class="text-muted small">Swipe <i class="fa-solid fa-arrow-right-long ms-1"></i></div>
+                </div>
+
+                <style>
+                    .blog-scroll-container {
+                        overflow-x: auto;
+                        scrollbar-width: none;
+                        /* Firefox */
+                        padding-bottom: 10px;
+                    }
+
+                    .blog-scroll-container::-webkit-scrollbar {
+                        display: none;
+                        /* Chrome/Safari */
+                    }
+
+                    .blog-grid-wrapper {
+                        display: grid;
+                        grid-template-columns: repeat(3, 300px);
+                        /* ۳ ستون (که هر کدام شامل ۲ ردیف هستند) */
+                        grid-template-rows: repeat(2, auto);
+                        grid-auto-flow: column;
+                        /* این باعث می‌شود مطالب به صورت ستونی پر شوند و اسکرول افقی ایجاد شود */
+                        gap: 1rem;
+                    }
+
+                    .blog-item {
+                        background: white;
+                        border: 1px solid #e2e8f0;
+                        border-radius: 1.2rem;
+                        padding: 1.2rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        min-height: 140px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                    }
+
+                    .blog-item:hover {
+                        border-color: var(--dotnet-purple);
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                    }
+
+                    .blog-item h6 {
+                        font-weight: 700;
+                        margin: 10px 0;
+                        font-size: 0.95rem;
+                        line-height: 1.3;
+                    }
+
+                    .blog-item p {
+                        font-size: 0.75rem;
+                        color: #64748b;
+                        margin: 0;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    .badge-mini {
+                        font-size: 0.6rem;
+                        font-weight: 800;
+                        padding: 4px 8px;
+                        border-radius: 6px;
+                        color: white;
+                        width: fit-content;
+                        letter-spacing: 0.5px;
+                    }
+                </style>
+                <div class="blog-scroll-container">
+                    <div class="blog-grid-wrapper">
+                        <!-- <div class="blog-item" onclick="window.location.href='/blog/redis-distributed-lock.html'">
+            <span class="badge-mini bg-primary">REDIS</span>
+            <h6>Distributed Locking in .NET</h6>
+            <p>How to handle race conditions in high-concurrency systems...</p>
+            <div class="mt-auto small fw-bold text-primary">Read Case Study <i class="fa-solid fa-arrow-right ms-1"></i></div>
+        </div> -->
+                        <div class="blog-item" onclick="openBlog('redis-lock')">
+                            <span class="badge-mini bg-primary">REDIS</span>
+                            <h6>Distributed Locking in .NET</h6>
+                            <p>Race conditions in crypto exchanges...</p>
+                        </div>
+                        <div class="blog-item" onclick="openBlog('idempotency')">
+                            <span class="badge-mini bg-success">PAYMENTS</span>
+                            <h6>Idempotent API Design</h6>
+                            <p>Preventing double-charge in gateways...</p>
+                        </div>
+
+                        <div class="blog-item" onclick="openBlog('net-performance')">
+                            <span class="badge-mini bg-info">PERFORMANCE</span>
+                            <h6>Native AOT in .NET 10</h6>
+                            <p>Low-memory footprint services...</p>
+                        </div>
+                        <div class="blog-item" onclick="openBlog('event-driven')">
+                            <span class="badge-mini bg-warning">ARCH</span>
+                            <h6>Event-Driven Consistency</h6>
+                            <p>Handling eventual consistency in Web3...</p>
+                        </div>
+
+                        <div class="blog-item" onclick="openBlog('security')">
+                            <span class="badge-mini bg-danger">SECURITY</span>
+                            <h6>HD Wallet Security</h6>
+                            <p>Managing private keys in exchanges...</p>
+                        </div>
+                        <div class="blog-item" onclick="openBlog('scalability')">
+                            <span class="badge-mini bg-dark">SCALING</span>
+                            <h6>Scaling WebSockets</h6>
+                            <p>Real-time price feeds for 100k+ users...</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="mt-5 text-center">
+            <p class="small text-muted fw-bold mb-4" style="letter-spacing: 2px; text-transform: uppercase;">Tech Stack
+                &
+                Ecosystem</p>
+            <div class="d-flex flex-wrap justify-content-center gap-4 opacity-75">
+                <i class="fa-brands fa-docker fs-3" title="Docker"></i>
+                <i class="fa-solid fa-database fs-3" title="PostgreSQL"></i>
+                <i class="fa-brands fa-aws fs-3" title="AWS"></i>
+                <i class="fa-brands fa-git-alt fs-3" title="Git"></i>
+                <i class="fa-solid fa-server fs-3" title="Linux/Ubuntu"></i>
+                <i class="fa-solid fa-cloud fs-3" title="Azure"></i>
+            </div>
+        </div>
+
+        <div class="mt-5 py-5">
+            <div class="identity-card border-0 shadow-sm text-center position-relative overflow-hidden"
+                style="background: var(--glass); backdrop-filter: blur(20px);">
+                <div class="glow-1" style="top: -150px; right: -150px; left: auto; opacity: 0.5;"></div>
+
+                <div class="position-relative" style="z-index: 2;">
+                    <h2 class="fw-800 mb-2">Let's Connect</h2>
+                    <p class="text-secondary mb-4 small fw-600">Available for high-performance .NET & Redis consulting
+                    </p>
+
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="https://t.me/hamidrezahy" class="capsule text-decoration-none">
+                            <i class="fa-brands fa-telegram me-2"></i>Telegram
+                        </a>
+                        <a href="https://github.com/hamidrezahy" class="capsule text-decoration-none">
+                            <i class="fa-brands fa-github me-2"></i>GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/hamidrezahy" class="capsule text-decoration-none">
+                            <i class="fa-brands fa-linkedin me-2"></i>LinkedIn
+                        </a>
+
+                        <a href="mailto:contact@hamidrezahy.com" class="capsule text-decoration-none"
+                            style="background: rgba(79, 70, 229, 0.1);">
+                            <i class="fa-solid fa-envelope me-2"></i>Email
+                        </a>
+                        <a href="tel:+989120000000" class="capsule text-decoration-none"
+                            style="background: rgba(14, 165, 233, 0.1);">
+                            <i class="fa-solid fa-phone me-2"></i>Call
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="custom-container text-center py-2">
+        <hr class="opacity-10 mb-4">
+        <p class="small text-muted fw-bold">Built with Precision & Minimalist Engineering Language.</p>
+    </footer>
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 2rem; overflow: hidden;">
+                <div class="modal-header border-0 p-4 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-md-5 pt-0">
+                    <div id="blogContent">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="recModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 1.5rem;">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-0" id="recContent">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const blogData = {
+        'redis-lock': {
+            title: 'Distributed Locking in .NET',
+            content: `
+                <h3 class="fw-800 mb-4">Handling Race Conditions</h3>
+                <p>In crypto exchanges, race conditions can lead to double-spending. Using <strong>RedLock</strong> with Redis ensures that only one process can access a critical section...</p>
+                <pre class="bg-light p-3 rounded"><code>var lock = await _redis.LockAsync("user_123", TimeSpan.FromSeconds(10));</code></pre>
+            `
+        },
+        'net-performance': {
+            title: 'Native AOT in .NET 10',
+            content: `
+                <h3 class="fw-800 mb-4">Native AOT Benefits</h3>
+                <p>Native AOT (Ahead-of-Time compilation) in .NET 10 significantly reduces startup time and memory footprint. This is crucial for cloud-native scaling...</p>
+            `
+        }
+    };
+
+    function openBlog(id) {
+        const article = blogData[id];
+        const modalBody = document.getElementById('blogContent');
+        modalBody.innerHTML = article.content;
+        const myModal = new bootstrap.Modal(document.getElementById('blogModal'));
+        myModal.show();
+    }
+
+
+</script>
+<script>
+    const recommendationData = [
+        {
+            id: 'rec-1',
+            name: 'Mohammad Mahdi Ahmadi',
+            position: 'Backend Software Engineer | FinTech & Crypto',
+            linkedin: 'https://www.linkedin.com/in/mahdiahmadi1991',
+            color: '#6366f1',
+            brief: 'I worked with Hamidreza on one of our largest project at Next Top Tech...',
+            text: 'I worked with Hamidreza Hematyar on one of our largest project at Next Top Tech while I led engineering. Hamidreza is a high-energy, highly dependable .NET engineer with strong ownership. When the stakes were high, he leaned in—staying focused through tight deadlines and helping the team land critical deliveries.'
+        },
+        {
+            id: 'rec-2',
+            name: 'Reza Basereh',
+            position: 'Software Engineer | Technical Team Lead',
+            linkedin: 'https://www.linkedin.com/in/reza-basereh',
+            color: '#14b8a6',
+            brief: 'Hamidreza is an energetic, motivated, and creative programmer...',
+            text: 'Having managed Hamidreza as a developer on my team, I can confidently describe him as an energetic, motivated, and creative programmer. His passion for technology is evident in his innovative approach to problem-solving. Hamidreza possesses outstanding interaction skills, making him a great team player.'
+        },
+        {
+            id: 'rec-3',
+            name: 'Sahand Sorouri',
+            position: 'Senior Product Manager | eCommerce • Fintech',
+            linkedin: 'https://www.linkedin.com/in/sahand-sorouri',
+            color: '#10b981',
+            brief: 'Working with him often feels like working with someone who deeply understands product...',
+            text: 'He is a backend developer, but working with him often feels like working with someone who deeply understands product and design, too. He is very easy to communicate with, truly sociable, and always supportive when things get complicated.'
+        },
+        {
+            id: 'rec-4',
+            name: 'Nasir Farhadi',
+            position: 'Frontend Developer',
+            linkedin: 'https://www.linkedin.com/in/nasir-farhadi',
+            color: '#f59e0b',
+            brief: 'The backend deliverables handled by Hamidreza always reach me on time, with precision...',
+            text: 'The backend deliverables handled by Hamidreza always reach me on time, with precision, and without any ambiguity. In addition to his strong expertise in .NET Core, he has an excellent understanding of system architecture and API design.'
+        },
+        {
+            id: 'rec-5',
+            name: 'Ehsan Heidarzadeh',
+            position: 'Software engineer | C# | SQL',
+            linkedin: 'https://www.linkedin.com/in/ehsan-hrz',
+            color: '#ec4899',
+            brief: 'Hamidreza is a challenge lover who consistently delivers solid results...',
+            text: 'Hamidreza is a professional Software Engineer who deeply understands the backend ecosystem. Working with him ensures that technical challenges are handled with a structured and calm approach.'
+        },    
+            {
+            id: 'rec-6',
+            name: 'Omid Sotooni',
+            position: 'Software Engineer | Full Stack Developer',
+            linkedin: 'https://www.linkedin.com/in/omidsotooni',
+            color: '#4f46e5',
+            brief: 'Hamidreza is a highly reliable Back-End Developer with strong technical expertise...',
+            text: 'Hamidreza is a highly reliable Back-End Developer with strong technical expertise and a solid engineering mindset. We have been working together at NextTopTech on different projects, and I have consistently seen his solid command of .NET Core and ASP.NET Core.'
+        }
+        
+    ];
+    // تابع کمکی برای گرفتن حروف اول اسم
+    function getInitials(name) {
+        return name.split(' ')
+            .map(n => n[0])
+            .join('')
+            .toUpperCase()
+            .substring(0, 2);
+    }
+
+    function renderRecommendations() {
+        const container = document.getElementById('recommendations-container');
+        if (!container) return;
+
+        container.innerHTML = recommendationData.map(rec => `
+        <div class="recommendation-card p-3 mb-3" 
+             onclick="openRecommendation('${rec.id}')"
+             style="border-left: 3px solid ${rec.color} !important; cursor: pointer;">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="avatar-initials" style="background-color: ${rec.color}20; color: ${rec.color};">
+                        ${getInitials(rec.name)}
+                    </div>
+                    <div>
+                        <h6 class="rec-name fw-bold mb-0">${rec.name}</h6>
+                        <p class="rec-position mb-0" style="font-size: 0.75rem; opacity: 0.7;">${rec.position}</p>
+                    </div>
+                </div>
+                <i class="fa-brands fa-linkedin text-primary opacity-50" style="font-size: 0.8rem;"></i>
+            </div>
+            <p class="rec-brief fst-italic mb-0" style="font-size: 0.85rem; opacity: 0.8;">
+                "${rec.brief}"
+            </p>
+        </div>
+    `).join('');
+    }
+
+    function openRecommendation(id) {
+        const data = recommendationData.find(r => r.id === id);
+        if (!data) return;
+
+        const modalHtml = `
+        <div class="text-center mb-4">
+            <div class="avatar-initials-lg mx-auto mb-3" style="background-color: ${data.color}20; color: ${data.color};">
+                ${getInitials(data.name)}
+            </div>
+            <h5 class="fw-800 mb-0">${data.name}</h5>
+            <small class="text-muted d-block mb-3">${data.position}</small>
+            <a href="${data.linkedin}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill px-3" style="font-size: 0.7rem; font-weight: 700;">
+                <i class="fa-brands fa-linkedin me-1"></i> VERIFY PROFILE
+            </a>
+        </div>
+        <div class="px-2">
+            <i class="fa-solid fa-quote-left fs-2 mb-2 d-block" style="color: ${data.color}; opacity: 0.2;"></i>
+            <p class="text-secondary lh-lg" style="font-size: 1rem; text-align: justify;">${data.text}</p>
+        </div>
+    `;
+
+        document.getElementById('recContent').innerHTML = modalHtml;
+        new bootstrap.Modal(document.getElementById('recModal')).show();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderRecommendations);
+</script>
+
+</html>
